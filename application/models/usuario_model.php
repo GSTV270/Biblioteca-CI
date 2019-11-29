@@ -6,16 +6,28 @@ class Usuario_model extends CI_Model {
 
         $this->load->database('biblioteca');
 
-        $sql="INSERT INTO usuario(cpf,dtnascimento,nome,email) VALUES($cpf,'".$dtnascimento."','".$nome."','".$email."');";
-        $this->db->query($sql);
-        
-        $sql="INSERT INTO dados_acesso(cpf_usuario, senha) VALUES($cpf,'".$senha."')";
+        $sql="INSERT INTO ALUNO VALUES(
+			PESSOA_TYPE(
+				$cpf,
+				'".$nome."',
+				TO_DATE('".$dtnascimento."', 'yyyy/mm/dd'),
+				'".$email."',
+				ENDERECO_TYPE(
+					'".$rua."',
+					'".$numero."',
+					'".$bairro."',
+					$cep
+				),
+				ACESSO_NESTED(
+					'".$senha."'
+				)
+			)
+		);";
         $this->db->query($sql);
         
         if( (!is_null($rua)) && !is_null($numero) && !is_null($bairro) && !is_null($cep) )
         {
-            $sql="INSERT INTO endereco(cpf_usuario,rua,numero,bairro,cep) VALUES($cpf,'".$rua."','".$numero."','".$bairro."','".$cep."')";
-            $this->db->query($sql);
+			
         }
         
         if( (!is_null($ctps)) && !is_null($cargo) )

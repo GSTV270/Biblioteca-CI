@@ -4,8 +4,10 @@ class Login_model extends CI_Model {
     public function check($cpf,$senha) {
         $this->load->database('biblioteca');
 
-        $sql="SELECT * FROM dados_acesso WHERE cpf_usuario='".$cpf."' AND senha='".$senha."'";
-        $result=$this->db->query($sql);
+        $sql="SELECT * FROM ALUNO WHERE CPF='".$cpf."' AND SENHA=HOME.ACESSO_NESTED('".$senha."')";
+		$result=$this->db->query("SELECT * FROM ALUNO");
+		var_dump($result->result_array());
+		die;
         if( !empty($result->result_array()) )
         {
             return true;
@@ -18,7 +20,7 @@ class Login_model extends CI_Model {
     {
         $this->load->database('biblioteca');
 
-        $sql="SELECT usuario.cpf, usuario.dtnascimento, usuario.nome, usuario.email, endereco.rua, endereco.numero, endereco.bairro, endereco.cep FROM usuario INNER JOIN endereco ON endereco.cpf_usuario=usuario.cpf WHERE cpf='".$cpf."'";
+        $sql="SELECT CPF, NOME, DATANASC, EMAIL FROM ALUNO WHERE CPF='".$cpf."'";
         $result=$this->db->query($sql);
         return $result->result_array()[0];
     }

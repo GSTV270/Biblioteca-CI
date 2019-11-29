@@ -74,12 +74,12 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['biblioteca'] = array(
-	'dsn'	=> '',
+	'dsn'	=> '//localhost/XE',
 	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'biblioteca',
-	'dbdriver' => 'mysqli',
+	'username' => 'home',
+	'password' => 'senha',
+	'database' => '',
+	'dbdriver' => 'oci8',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
