@@ -76,10 +76,10 @@ $query_builder = TRUE;
 $db['biblioteca'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-	'username' => 'root',
+	'username' => 'postgres',
 	'password' => '',
 	'database' => 'biblioteca',
-	'dbdriver' => 'mysqli',
+	'dbdriver' => 'postgre',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),

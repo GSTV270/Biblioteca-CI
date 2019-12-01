@@ -36,15 +36,11 @@ class Login extends CI_Controller {
                     session_start();
                 }
 
-                $dados=$this->login_model->get_userdata($cpf_filtrado);                               
+				$dados=$this->login_model->get_userdata($cpf_filtrado);
                 $this->session->userdata['logged_in']['cpf'] = $dados['cpf'];
-                $this->session->userdata['logged_in']['dtnascimento'] = $dados['dtnascimento'];
+                $this->session->userdata['logged_in']['dtnascimento'] = $dados['datanasc'];
                 $this->session->userdata['logged_in']['nome'] = $dados['nome'];
                 $this->session->userdata['logged_in']['email'] = $dados['email'];
-                $this->session->userdata['logged_in']['rua'] = $dados['rua'];
-                $this->session->userdata['logged_in']['numero'] = $dados['numero'];
-                $this->session->userdata['logged_in']['bairro'] = $dados['bairro'];
-                $this->session->userdata['logged_in']['cep'] = $dados['cep'];
 
                 $check_funcionario=$this->login_model->check_funcionario($cpf_filtrado); 
                 if($check_funcionario==true)

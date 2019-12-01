@@ -4,8 +4,8 @@ class Login_model extends CI_Model {
     public function check($cpf,$senha) {
         $this->load->database('biblioteca');
 
-        $sql="SELECT * FROM dados_acesso WHERE cpf_usuario='".$cpf."' AND senha='".$senha."'";
-        $result=$this->db->query($sql);
+        $sql="SELECT * FROM pessoa WHERE cpf='".$cpf."' AND (senha).senha='".$senha."'";
+		$result=$this->db->query($sql);
         if( !empty($result->result_array()) )
         {
             return true;
@@ -18,7 +18,7 @@ class Login_model extends CI_Model {
     {
         $this->load->database('biblioteca');
 
-        $sql="SELECT usuario.cpf, usuario.dtnascimento, usuario.nome, usuario.email, endereco.rua, endereco.numero, endereco.bairro, endereco.cep FROM usuario INNER JOIN endereco ON endereco.cpf_usuario=usuario.cpf WHERE cpf='".$cpf."'";
+        $sql="SELECT * FROM pessoa WHERE cpf='".$cpf."'";
         $result=$this->db->query($sql);
         return $result->result_array()[0];
     }
@@ -27,7 +27,7 @@ class Login_model extends CI_Model {
     {
         $this->load->database('biblioteca');
 
-        $sql = "SELECT * FROM funcionario";
+        $sql = "SELECT * FROM administrador WHERE cpf='".$cpf."'";
         $result=$this->db->query($sql);
         if( !empty($result->result_array()) )
         {
@@ -41,7 +41,7 @@ class Login_model extends CI_Model {
     {
         $this->load->database('biblioteca');
 
-        $sql = "SELECT ctps,cargo FROM funcionario WHERE cpf_usuario='$cpf';";
+        $sql = "SELECT ctps,cargo FROM administrador WHERE cpf='$cpf';";
         $result=$this->db->query($sql);
         return $result->result_array()[0];
     }
