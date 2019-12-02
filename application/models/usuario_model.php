@@ -14,5 +14,14 @@ class Usuario_model extends CI_Model {
             $sql="INSERT INTO funcionario VALUES('".$cpf."','".$ctps."','".$cargo."')";
             $this->db->query($sql);
         }
-    } 
+	}
+	
+	public function exibir($cpf) {
+		$this->load->database('biblioteca');
+
+		$sql="SELECT nome, datanasc, email, (endereco).rua, (endereco).numero, (endereco).bairro, (endereco).cep FROM pessoa WHERE cpf='".$cpf."' ";
+		$perfil = $this->db->query($sql);
+
+		return $perfil->result_array()[0];
+	}
 }

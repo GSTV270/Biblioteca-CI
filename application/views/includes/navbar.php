@@ -29,7 +29,11 @@
 			</li>				  
 		</ul>
 		<p class="nav-item">
-			<a class="nav-link" style="text-decoration:none !important; text-align: right;">Bem-vindo <?=$this->session->userdata['logged_in']['nome'];?></a>
+			<a class="nav-link" style="text-decoration:none !important; text-align: right;">
+				<a href="<?=base_url().'perfil'?>">
+					Bem-vindo <?=$this->session->userdata['logged_in']['nome'];?>
+				</a>
+			</a>
 		</p>
 	</div>
 </nav>

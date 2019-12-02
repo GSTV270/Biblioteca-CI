@@ -42,4 +42,19 @@ class Usuario extends CI_Controller {
 		$this->usuario_model->cadastrar($cpf, $dtnascimento, $nome, $email, $senha, $rua, $numero, $bairro, $cep, $ctps, $cargo);
 		redirect('pagina-inicial', 'refresh');
 	}
+
+	public function exibir_perfil() {
+		$this->load->model('usuario_model');
+
+		$cpf=str_replace(['+', '-'], '', filter_var($this->session->userdata['logged_in']['cpf'], FILTER_SANITIZE_NUMBER_INT));
+
+		$usuarioLogado = $this->usuario_model->exibir($cpf);
+
+		$data['usuario_logado'] = $usuarioLogado;
+
+		if ( $this->session->userdata['logged_in']['cpf']==$cpf )
+		{
+			$this->load->view('perfil_view', $data);
+		}
+	}
 }

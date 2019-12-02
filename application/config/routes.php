@@ -65,4 +65,4 @@ $route['cadastrar-livro'] = 'livro/index';
 
 $route['emprestimos'] = 'emprestimo/index';
 
-
+$route['perfil'] = 'usuario/exibir_perfil';
