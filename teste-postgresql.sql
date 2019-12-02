@@ -19,7 +19,7 @@ CREATE TABLE pessoa (
 );
 
 CREATE TABLE livro (
-    id INTEGER PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     titulo VARCHAR(30),
     autor VARCHAR(50),
     editora VARCHAR(30),

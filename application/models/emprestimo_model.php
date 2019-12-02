@@ -6,7 +6,7 @@ class Emprestimo_model extends CI_Model {
 
         $this->load->database('biblioteca');
 
-        $sql= "SELECT emprestimo.id,emprestimo.dtemprestimo,livro.titulo AS nome FROM emprestimo INNER JOIN livro ON livro.id=emprestimo.id_livro WHERE emprestimo.cpf_usuario=".$cpf_usuario." AND emprestimo.id NOT IN (SELECT devolucao.id_emprestimo FROM devolucao);";    
+        $sql= "SELECT emprestimo.id, emprestimo.data, livro.titulo FROM emprestimo, livro WHERE livro.id=emprestimo.livro AND emprestimo.usuario='".$cpf_usuario."' AND emprestimo.id NOT IN (SELECT devolucao.emprestimo FROM devolucao)";    
         $obj=$this->db->query($sql);
         $result=$obj->result_array();
         return $result;
@@ -16,7 +16,7 @@ class Emprestimo_model extends CI_Model {
         
         $this->load->database('biblioteca');
 
-        $sql="INSERT INTO emprestimo(id_livro,cpf_usuario,dtemprestimo) VALUES(".$id_livro.",".$cpf_usuario.", NOW());";    
+        $sql="INSERT INTO emprestimo VALUES(".$id_livro.",'".$cpf_usuario."', NOW());";    
         $this->db->query($sql);
     }
     

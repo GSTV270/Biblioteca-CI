@@ -27,7 +27,7 @@ class Livro_model extends CI_Model {
         
         $this->load->database('biblioteca');
 
-        $sql="INSERT INTO livro(titulo,autor,editora,dtpublicacao,genero,secao,qttotal,qtalugado) VALUES('".$titulo."','".$autor."','".$editora."','".$dtpublicacao."','".$genero."','".$secao."','".$qttotal."',0);";
+        $sql="INSERT INTO livro(titulo,autor,editora,publicacao,genero,secao,qtde,alugado) VALUES('".$titulo."','".$autor."','".$editora."','".$dtpublicacao."','".$genero."','".$secao."',".$qttotal.",0);";
         $this->db->query($sql);
     }
 }
