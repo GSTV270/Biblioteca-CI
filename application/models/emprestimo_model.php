@@ -16,7 +16,7 @@ class Emprestimo_model extends CI_Model {
         
         $this->load->database('biblioteca');
 
-        $sql="INSERT INTO emprestimo VALUES(".$id_livro.",'".$cpf_usuario."', NOW());";    
+        $sql="INSERT INTO emprestimo(livro, usuario, data) VALUES(".$id_livro.",'".$cpf_usuario."', NOW());";    
         $this->db->query($sql);
     }
     

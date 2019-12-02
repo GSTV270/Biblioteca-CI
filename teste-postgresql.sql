@@ -39,7 +39,7 @@ CREATE TABLE administrador (
 );
 
 CREATE TABLE emprestimo (
-    id INTEGER PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     livro INTEGER REFERENCES livro(id) ON DELETE NO ACTION,
     usuario VARCHAR(11) REFERENCES pessoa(cpf) ON DELETE NO ACTION,
     data DATE

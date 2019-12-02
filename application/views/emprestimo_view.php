@@ -25,8 +25,8 @@
                             echo '
                             <tr>
                                 <td>'.$emprestimo['id'].'</td>
-                                <td>'.$emprestimo['nome'].'</td>
-                                <td>'.$emprestimo['dtemprestimo'].'</td>
+                                <td>'.$emprestimo['titulo'].'</td>
+                                <td>'.$emprestimo['data'].'</td>
                                 <td><button type="button" class="btn btn-primary"><a href="'.base_url().'emprestimo/devolver/'.$emprestimo['id'].'">Devolver</a></button></td>
                             </tr>';
                         }
