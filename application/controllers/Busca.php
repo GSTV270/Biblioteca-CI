@@ -35,9 +35,9 @@ class Busca extends CI_Controller {
 			$array_livros[$i][]=$value['autor'];
 			$array_livros[$i][]=$value['editora'];
 			$array_livros[$i][]=$value['genero'];
-			$array_livros[$i][]=$value['dtpublicacao'];
+			$array_livros[$i][]=$value['publicacao'];
 			$array_livros[$i][]=$value['secao'];
-			$array_livros[$i][]=$value['qtdisponivel'];
+			$array_livros[$i][]=$value['qtde'];
 			$array_livros[$i][]='<button type="button" class="btn btn-primary"><a href="'.base_url().'emprestimo/alugar/'.$value['id'].'">Alugar</a></button>';
 			$i++;
 		}

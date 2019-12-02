@@ -24,7 +24,7 @@ class Emprestimo_model extends CI_Model {
 
         $this->load->database('biblioteca');
 
-        $sql="INSERT INTO devolucao(id_emprestimo, dtdevolucao) VALUES(".$emprestimo_id.", NOW());";    
+        $sql="INSERT INTO devolucao(emprestimo, devolucao) VALUES(".$emprestimo_id.", NOW());";    
         $this->db->query($sql);
     }
 }
