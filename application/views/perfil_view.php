@@ -9,7 +9,15 @@
 	<body>
 		<center>
 			<?php include 'includes/navbar.php' ?>
-			<?php var_dump($usuario_logado) ?>
+			<h1>Perfil</h1>
+			<br>
+			<p><strong>Nome: </strong><?=$usuario_logado['nome']?></p>
+			<p><strong>Data de Nascimento: </strong><?=date('d/m/Y',strtotime($usuario_logado['datanasc']))?></p>
+			<p><strong>Email: </strong><?=$usuario_logado['email']?></p>
+			<p><strong>Endereço: </strong><?=$usuario_logado['rua']?></p>
+			<p><strong>Número: </strong><?=$usuario_logado['numero']?></p>
+			<p><strong>Bairro: </strong><?=$usuario_logado['bairro']?></p>
+			<p><strong>CEP: </strong><?=$usuario_logado['cep']?></p>
 		</center>
 	</body>
 	<script src="<?= base_url().'assets/js/bootstrap/bootstrap.min.js'?>" type="text/javascript"></script>
