@@ -53,7 +53,8 @@ CREATE TABLE devolucao (
 --TRIGGER & FUNCAO
 CREATE OR REPLACE FUNCTION devolucao_BFINS() RETURNS TRIGGER AS $devolucao_bfins$
 	BEGIN
-        	UPDATE livro SET alugado = CAST(alugado AS SIGNED) - 1 WHERE id = (SELECT livro from emprestimo where id = NEW.id);
+        	UPDATE livro SET alugado = alugado - 1 WHERE id = (SELECT livro from emprestimo where id = NEW.emprestimo);
+            RETURN NEW;
 	END;
 $devolucao_bfins$ LANGUAGE plpgsql;
 
@@ -64,6 +65,7 @@ CREATE OR REPLACE FUNCTION emprestimo_BFINS() RETURNS TRIGGER AS $emprestimo_bfi
         ELSE
             RAISE EXCEPTION 'O LIVRO NÃO PODE SER EMPRESTADO!';
         END IF;
+        RETURN NEW;
     END;
 $emprestimo_bfins$ LANGUAGE plpgsql;
 
